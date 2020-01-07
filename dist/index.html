@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Travel Planner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Client.loadTrips();
+        })    
+    </script>
+
+    <div class="container">
+
+        <header>
+
+            <h1>Travel Planner</h1>
+            <img src="./assets/logo.jpg" width="45" height="45">
+
+        </header>
+
+        <main>
+
+            <div class="addflight">
+                <b>I'm traveling to:</b>
+                <input type="search" id="destination" placeholder="e.g. London">
+                <b>Departing:</b>
+                <input type="date" id="departdate" placeholder="I am departing at...">
+                <b>Returning:</b>
+                <input type="date" id="returndate" placeholder="I am returning at...">
+                <input type="button" value="Add Trip" onclick="Client.appendTrip()">
+            </div>
+
+        </main>
+
+        <nav>
+
+            <b>Recent Trips:</b>
+
+            <div class="boxcontainer"></div>
+
+        </nav>
+
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/service-worker.js').then(
+                    function (registration) {
+                        // Registration was successful
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, function (err) {
+                        // registration failed :(
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+<script type="text/javascript" src="bundle.js"></script></body>
+
+</html>

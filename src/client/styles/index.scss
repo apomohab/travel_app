@@ -1,0 +1,59 @@
+@import "./nav.scss";
+@import "./main.scss";
+
+.container {
+  display: grid;
+  grid-gap: 10%;
+}
+
+header {
+  grid-area: head;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-self: center;
+}
+
+nav {
+  grid-area: nav;
+}
+
+main {
+  grid-area: body;
+  justify-self: center;
+  // margin-left: 10%;
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-areas:
+      "head"
+      "body"
+      "nav"
+      "foot";
+  }
+  .addflight {
+    flex-direction: column;
+    
+    & > * {
+      margin-top: 10px;
+    }
+
+    & > input:not([type=button]) {
+      height: 28px;
+    }
+
+    & > input[type=button] {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 601px) {
+  .container {
+    grid-template-areas:
+      "head head head head"
+      "body body body body"
+      "foot foot foot nav";
+  }
+}
